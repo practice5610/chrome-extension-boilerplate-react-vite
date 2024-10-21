@@ -9,7 +9,7 @@ const sidePanelConfig = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-  permissions: ['sidePanel'],
+  permissions: ['sidePanel', 'scripting', 'activeTab', 'notifications'],
 };
 
 /**
@@ -27,7 +27,7 @@ const manifest = deepmerge(
     name: '__MSG_extensionName__',
     version: packageJson.version,
     description: '__MSG_extensionDescription__',
-    host_permissions: ['<all_urls>'],
+    host_permissions: ['https://staging.gotiking.com/*', '<all_urls>'],
     permissions: ['storage', 'scripting', 'tabs', 'notifications'],
     options_page: 'options/index.html',
     background: {
