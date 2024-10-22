@@ -23,7 +23,7 @@ const Popup = () => {
     if (tab.url!.startsWith('about:') || tab.url!.startsWith('chrome:')) {
       chrome.notifications.create('inject-error', notificationOptions);
     }
-
+    console.log('fadsfadsf');
     await chrome.scripting
       .executeScript({
         target: { tabId: tab.id! },
