@@ -5,5 +5,13 @@ exampleThemeStorage.get().then(theme => {
   console.log('theme', theme);
 });
 
-console.log('background loaded');
-console.log("Edit 'chrome-extension/src/background/index.ts' and save to reload.");
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  console.log('Message from the background script232:');
+  console.log(request.greeting);
+
+  // Send a response back
+  sendResponse({ response: 'Hi from content script' });
+
+  // Return true to indicate you want to send a response asynchronously
+  return true;
+});

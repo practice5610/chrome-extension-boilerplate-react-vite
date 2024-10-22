@@ -3,24 +3,13 @@ import { mount } from '@src/Root';
 mount();
 console.log('test run time');
 
-// Save session storage data
-const sessionData1 = { test: 'test' };
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  console.log('Message from the background scripddt:');
+  console.log(request.greeting);
 
-// Log session storage data
-console.log('Session Storage Data:', sessionData1);
+  // Send a response back
+  sendResponse({ response: 'Hi from content script' });
 
-// Save session storage to Chrome storage (sync)
-chrome.storage.sync.set({ sessionData1 }, function () {
-  console.log('Session storage data saved to sync storage.');
+  // Return true to indicate you want to send a response asynchronously
+  return true;
 });
-
-chrome.storage.sync.get(['sessionData'], function (result) {
-  console.log('Retrieved session storage data:', result.sessionData);
-});
-async function getCurrentTabUrl() {
-  const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
-  console.log('current tab', tab);
-}
-
-// Call the function to get the current tab URL
-getCurrentTabUrl();

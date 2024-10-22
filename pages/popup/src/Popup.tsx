@@ -19,18 +19,24 @@ const Popup = () => {
 
     if (tab.url!.startsWith('about:') || tab.url!.startsWith('chrome:')) {
       chrome.notifications.create('inject-error', notificationOptions);
+      return; // Stop further execution
     }
-    await chrome.scripting
-      .executeScript({
+
+    try {
+      await chrome.scripting.executeScript({
         target: { tabId: tab.id! },
         files: ['/content-runtime/index.iife.js'],
-      })
-      .catch(err => {
-        // Handling errors related to other paths
-        if (err.message.includes('Cannot access a chrome:// URL')) {
-          chrome.notifications.create('inject-error', notificationOptions);
-        }
       });
+
+      // Send a message to the content script after injection
+      chrome.tabs.sendMessage(tab.id!, { greeting: 'Hello from popup' }, response => {
+        console.log('Response from content script:', response.response);
+      });
+    } catch (err) {
+      if (err.message.includes('Cannot access a chrome:// URL')) {
+        chrome.notifications.create('inject-error', notificationOptions);
+      }
+    }
   };
 
   return (
