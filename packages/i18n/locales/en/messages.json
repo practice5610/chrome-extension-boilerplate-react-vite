@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
-    "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "description": "test description",
+    "message": "test message by asim"
   },
   "extensionName": {
-    "description": "Extension name",
-    "message": "Chrome extension boilerplate"
+    "description": "test name",
+    "message": "test message by asim"
   },
   "toggleTheme": {
     "message": "Toggle theme"

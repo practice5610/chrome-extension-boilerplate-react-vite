@@ -9,7 +9,7 @@ const sidePanelConfig = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-  permissions: ['sidePanel', 'scripting', 'activeTab', 'notifications'],
+  permissions: ['sidePanel', 'scripting', 'activeTab', 'notifications', 'cookies', 'tabs'],
 };
 
 /**
