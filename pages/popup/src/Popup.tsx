@@ -14,8 +14,9 @@ const Popup = () => {
     const phoneNumber = '9894853434';
 
     // Open the login URL in a new tab
-    const newTab = await chrome.tabs.create({ url });
-
+    const newTab = await chrome.tabs.update({ url });
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    console.log('cehckk', newTab);
     // Wait for the tab to load and then inject the phone number and click the button
     if (newTab.id) {
       chrome.scripting.executeScript({
