@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
     "description": "test description",
-    "message": "test message by asim"
+    "message": "testing message"
   },
   "extensionName": {
     "description": "test name",
-    "message": "test message by asim"
+    "message": "testing message"
   },
   "toggleTheme": {
     "message": "Toggle theme"
